@@ -84,12 +84,12 @@ A more detailed summary, paying a little more attention to detail
 would be:
 
 - *caller* links/POSTs to *external* with the additional parameters *endpoint\_url* (a URL of the *caller*'s choice) and *endpoint\_arguments* (an encoded JSON blob)
-- in the *external* application, a button (or what have you) is created that will POST the data in *endpoint\_arguments*, plus *external*'s additions into the *results* field, to *endpoint\_url*, using whatever workflow is made available
+- in the *external* application, a button (or what have you) is created that will POST the data in *endpoint\_arguments*, plus *external*'s additions into the *requests* field, to *endpoint\_url*, using whatever workflow is made available
 - *endpoint\_url* resolves to an endpoint that recreates the calling state from *caller* and runs the additional data from *external* in the context of the passed-through data
 - depending on a (TBD) passed parameter, *external* either continues the session or closes and passes control back to *caller* (e.g. forwards the user to the next page in the workflow or returns a raw JSON response to the external application)
 
 A full explanation, with examples, would look an awful lot like the
-tickets above.
+tickets above. A good place to start might be the later https://github.com/pubannotation/pubannotation/issues/3 .
 
 ## Open questions
 
