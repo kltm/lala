@@ -49,15 +49,15 @@ qualities:
 
 - Easy to implement <br />
   Complexity can be a barrier to adoption and implementation
-- Basic HTTP tooling
+- Basic HTTP tooling <br />
   Any system should have easy access to the tools necessary
-- "Stateless"
+- "Stateless" <br />
   Simplifying debugging and implementation
-- Minimal need for initial coordination
+- Minimal need for initial coordination <br />
   Beyond what data is to be returned, the external application does not need to understand the transiting packet
-- No need for calling application to coordinate changes to own API after initial coordination
+- No need for calling application to coordinate changes to own API after initial coordination <br />
   As the calling application is responsible for decoding the information it initially sent and the location it is sent to, major API changes can occur without the need to coordinate with any other resource
-- Have the ability to perform operations "remotely" while still logged-in to the calling application, without the need to coordinate cross-site logins
+- Have the ability to perform operations "remotely" while still logged-in to the calling application, without the need to coordinate cross-site logins <br />
   This can be done by placing an authorization token in the transiting packet
 
 Taking inspiration from the methods used
