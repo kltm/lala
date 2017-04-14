@@ -94,8 +94,8 @@ would be:
 A canned interaction example--somewhat more complicated, taken from Textpresso Central interaction with Noctua--might have outgoing URL GET parameters:
 
 ```
-*endpoint\_url*=*​URL encoded location of caller endpoint (POST to this URL)*
-*endpoint\_arguments*=*​URL encoded stringified JSON blob structured as below*
+endpoint_url = ​URL encoded location of caller endpoint (POST to this URL)
+endpoint_arguments = ​URL encoded stringified JSON blob structured as below
 ```
 
 ```json
