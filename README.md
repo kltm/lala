@@ -10,8 +10,8 @@
 
 ## Presentations and context
 
-- [BLAH 3](http://blah3.linkedannotation.org/) [presentation](https://docs.google.com/presentation/d/1-3HgoBmnu9p1Alt6myjfLUJIOojIgpskRFh47NjEd5A/edit?usp=sharing) [???](https://docs.google.com/document/d/16DNkAO9YHKZmQjdVxq2B_ULYQDu7jjc0aciVKdTwX8w/edit?usp=sharing), [summary](https://docs.google.com/document/d/16DNkAO9YHKZmQjdVxq2B_ULYQDu7jjc0aciVKdTwX8w/edit?usp=sharing)
-- [BioHackathon 16](http://2016.biohackathon.org/), [summary](https://github.com/dbcls/bh16/wiki/Noctua#add-connections-with-external-markuppaper-annotation-resources-partial)
+- [BLAH 3](http://blah3.linkedannotation.org/) [presentation](https://docs.google.com/presentation/d/1-3HgoBmnu9p1Alt6myjfLUJIOojIgpskRFh47NjEd5A/edit?usp=sharing) and [work summary](https://docs.google.com/document/d/16DNkAO9YHKZmQjdVxq2B_ULYQDu7jjc0aciVKdTwX8w/edit?usp=sharing)
+- [BioHackathon 16](http://2016.biohackathon.org/), [work summary](https://github.com/dbcls/bh16/wiki/Noctua#add-connections-with-external-markuppaper-annotation-resources-partial)
 
 This proposal has its origins in initial work done with Noctua
 communicating with Textpresso Central, for the use cases of 1) adding
@@ -33,9 +33,9 @@ directly between web-based applications.
 More concretely, the use case that we wish to look at is how to obtain
 small packets of specific information from an external resource that
 has its own associated web application; we look to do this by
-round-tripping a packet of information (acting as a ``black box'' or
-``piggy bank'') through the external application using basic HTTP
-methods, allowing an easy high-level ``federation''. In an environment
+round-tripping a packet of information (acting as a "black box" or
+"piggy bank") through the external application using basic HTTP
+methods, allowing an easy high-level "federation". In an environment
 where much effort is being spent on the creation of rich web
 applications tailored to the habits of specific groups of scientists
 and curators, users and engineers would have much to gain by being
@@ -47,17 +47,17 @@ specification.
 In creating this protocol, we want to captures the following
 qualities:
 
-- Easy to implement
+- Easy to implement <br />
   Complexity can be a barrier to adoption and implementation
 - Basic HTTP tooling
   Any system should have easy access to the tools necessary
-- ``Stateless''
+- "Stateless"
   Simplifying debugging and implementation
 - Minimal need for initial coordination
   Beyond what data is to be returned, the external application does not need to understand the transiting packet
 - No need for calling application to coordinate changes to own API after initial coordination
   As the calling application is responsible for decoding the information it initially sent and the location it is sent to, major API changes can occur without the need to coordinate with any other resource
-- Have the ability to perform operations ``remotely'' while still logged-in to the calling application, without the need to coordinate cross-site logins
+- Have the ability to perform operations "remotely" while still logged-in to the calling application, without the need to coordinate cross-site logins
   This can be done by placing an authorization token in the transiting packet
 
 Taking inspiration from the methods used
