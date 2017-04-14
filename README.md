@@ -111,7 +111,9 @@ endpoint_arguments = ​URL encoded stringified JSON blob structured as below
 }
 ```
 
-Incoming/returning data, POSTed to the *endpoint\_url*, would be the same as the outgoing data above, except with requests added in the proper location:
+Incoming/returning data, POSTed to the *endpoint\_url*, would be the
+same as the outgoing data above, except with requests added in the
+proper location:
 
 ```json
 {
@@ -142,8 +144,9 @@ Keep in mind that the actual contents of the passed packet are
 "abritrary" and completely decided by the caller, except for the
 *requests* list field that can be filled by the external application.
 
-A full explanation, with examples, would look an awful lot like the
-tickets above. A good place to start might be the later https://github.com/pubannotation/pubannotation/issues/3 .
+A fuller explanation, with examples, would look an awful lot like the
+tickets above. A good place to start might be the later
+https://github.com/pubannotation/pubannotation/issues/3 .
 
 ## Open questions
 
