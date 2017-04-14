@@ -91,6 +91,57 @@ would be:
 - *endpoint\_url* resolves to an endpoint that recreates the calling state from *caller* and runs the additional data from *external* in the context of the passed-through data
 - depending on a (TBD) passed parameter, *external* either continues the session or closes and passes control back to *caller* (e.g. forwards the user to the next page in the workflow or returns a raw JSON response to the external application)
 
+A canned interaction example--somewhat more complicated, taken from Textpresso Central interaction with Noctua--might have outgoing URL GET parameters:
+
+```
+*endpoint\_url*=*​URL encoded location of caller endpoint (POST to this URL)*
+*endpoint\_arguments*=*​URL encoded stringified JSON blob structured as below*
+```
+
+```json
+{
+    "token": "uzrtkn",
+    "provided-by": [
+        "http://foo.bar"
+    ],
+    "x-user-id": "http://orcid.org/foo",
+    "x-model-id": "gomodel:01234567",
+    "x-client-id": "tpc",
+    "requests": []
+}
+```
+
+Incoming/returning data, POSTed to the *endpoint\_url*, would be the same as the outgoing data above, except with requests added in the proper location:
+
+```json
+{
+    "token": "uzrtkn",
+    "provided-by": [
+        "http://foo.bar"
+    ],
+    "x-user-id": "http://orcid.org/foo",
+    "x-model-id": "gomodel:01234567",
+    "x-client-id": "tpc",
+    "requests": [
+        {
+            "database-id": "UniProtKB:A0A005",
+            "evidence-id": "ECO:0000314",
+            "class-id": "GO:0050689",
+            "reference-id": "PMID:666333",
+            "external-id": "XXX:YYYYYYY",
+            "comments": [
+                "foo",
+                "bar"
+            ]
+        }
+    ]
+}
+```
+
+Keep in mind that the actual contents of the passed packet are
+"abritrary" and completely decided by the caller, except for the
+*requests* list field that can be filled by the external application.
+
 A full explanation, with examples, would look an awful lot like the
 tickets above. A good place to start might be the later https://github.com/pubannotation/pubannotation/issues/3 .
 
