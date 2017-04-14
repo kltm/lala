@@ -47,17 +47,17 @@ specification.
 In creating this protocol, we want to captures the following
 qualities:
 
-- Easy to implement <br />
+- _Easy to implement_ <br />
   Complexity can be a barrier to adoption and implementation
-- Basic HTTP tooling <br />
+- _Basic HTTP tooling_ <br />
   Any system should have easy access to the tools necessary
-- "Stateless" <br />
+- _"Stateless"_ <br />
   Simplifying debugging and implementation
-- Minimal need for initial coordination <br />
+- _Minimal need for initial coordination_ <br />
   Beyond what data is to be returned, the external application does not need to understand the transiting packet
-- No need for calling application to coordinate changes to own API after initial coordination <br />
+- _No need for calling application to coordinate changes to own API after initial coordination_ <br />
   As the calling application is responsible for decoding the information it initially sent and the location it is sent to, major API changes can occur without the need to coordinate with any other resource
-- Have the ability to perform operations "remotely" while still logged-in to the calling application, without the need to coordinate cross-site logins <br />
+- _Have the ability to perform operations "remotely" while still logged-in to the calling application, without the need to coordinate cross-site logins_ <br />
   This can be done by placing an authorization token in the transiting packet
 
 Taking inspiration from the methods used
