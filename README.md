@@ -156,6 +156,7 @@ biological and curation applications available. We would like input on how that 
 
 - better documentation
 - changes to the specification
+- implementations/middleware
 - a central registry
 
 As well, there are some edge cases, especially around passing control
