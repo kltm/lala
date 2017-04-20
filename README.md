@@ -10,7 +10,7 @@
 
 ## Presentations and context
 
-- [BLAH 3](http://blah3.linkedannotation.org/) [presentation](https://docs.google.com/presentation/d/1-3HgoBmnu9p1Alt6myjfLUJIOojIgpskRFh47NjEd5A/edit?usp=sharing) and [work summary](https://docs.google.com/document/d/16DNkAO9YHKZmQjdVxq2B_ULYQDu7jjc0aciVKdTwX8w/edit?usp=sharing)
+- [Biomedical Linked Annotation Hackathon (BLAH) 3](http://blah3.linkedannotation.org/) [presentation](https://docs.google.com/presentation/d/1-3HgoBmnu9p1Alt6myjfLUJIOojIgpskRFh47NjEd5A/edit?usp=sharing) and [work summary](https://docs.google.com/document/d/16DNkAO9YHKZmQjdVxq2B_ULYQDu7jjc0aciVKdTwX8w/edit?usp=sharing)
 - [BioHackathon 16](http://2016.biohackathon.org/), [work summary](https://github.com/dbcls/bh16/wiki/Noctua#add-connections-with-external-markuppaper-annotation-resources-partial)
 
 This proposal has its origins in initial work done with Noctua
