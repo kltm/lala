@@ -144,13 +144,7 @@ Keep in mind that the actual contents of the passed packet are
 "abritrary" and completely decided by the caller, except for the
 *requests* list field that can be filled by the external application.
 
-Control after POSTing to the caller's API would be handled using HTTP codes, with:
-
-- *200* (OK) The caller recieved the information and passed the results (whether ot not the external application cares) back; control remains with the external application
-- *204* (No Content) The caller received the information and there is nothing more to do; the external application's window can close itself
-- *303* (See Other) The caller recieved the data and the results can be found at *Location*; the external application should redirect to that in the current screen
-
-The flow of control is left to the calling application, as it may have opened a new window, or have some other process in places.
+Control after POSTing to the caller's API would be handled using HTTP codes by the caller. It might be interesting to consider a more interactive use case for calling applications, such as passing control back to the external appication after the data has ben processed by the caller. As the flow of control is left to the calling application, as it may have opened a new window for the external application that it wants closed, or have some other process in place to get the user re-oriented. 
 
 A fuller explanation, with examples, would look an awful lot like the
 tickets above. A good place to start might be the later
