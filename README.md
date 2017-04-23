@@ -144,7 +144,7 @@ Keep in mind that the actual contents of the passed packet are
 "abritrary" and completely decided by the caller, except for the
 *requests* list field that can be filled by the external application.
 
-Control after POSTing to the caller's API would be controlled using HTTP codes, with:
+Control after POSTing to the caller's API would be handled using HTTP codes, with:
 
 - *200* (OK) The caller recieved the information and passed the results (whether ot not the external application cares) back; control remains with the external application
 - *204* (No Content) The caller received the information and there is nothing more to do; the external application's window can close itself
