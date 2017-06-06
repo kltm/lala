@@ -1,0 +1,173 @@
+%%%%
+%%%% Initially nicked from:
+%%%%  https://github.com/bow/talks/blob/master/2014_bosc/abstract/abstract.tex
+%%%%
+%%%% \url{http://geneontology.org/}
+%%%%
+%%%% Compile:
+%%%%   pdflatex abstract.tex
+%%%%   evince abstract.pdf
+%%%%   TODO: pandoc -s -f latex -t markdown_github -o ../README.md ./abstract.tex
+%%%%
+
+\documentclass[10pt,oneside]{article}
+\usepackage{enumitem} % remove spaces inside lists
+
+%%%%%%%%%%%%%
+\setlength{\textheight}{8.75in} %Letter is 11in, less 2 for margins, less 0.25 for footer
+\setlength{\oddsidemargin}{0.0in} %gets +1inc
+\setlength{\evensidemargin}{0.0in} %gets +1inch
+\setlength{\textwidth}{6.50in} %Letter is 8.5, less 2 inches for margins
+\setlength{\topmargin}{0.5in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\parindent}{0.25in}
+%%%%%%%%%%%% 
+
+\usepackage[numbers]{natbib}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,citecolor=black,urlcolor=blue]{hyperref}
+
+\title{%Hack to get the logo on the PDF front page:
+\vspace{-1.5in}
+%% Some latex cannot read PNG sizes.
+\includegraphics[width=0.5\textwidth,natwidth=485,natheight=125]{go-logo-small.png}\\
+%Hack to get some white space using a blank line:
+~\\Users, Communication, and a Light Application-Level API: A Request for Comments}
+
+\author{
+  Seth Carbon\footnote{Berkeley Bioinformatics Open-source Projects, Lawrence Berkeley National Lab, Berkeley, CA, USA.} % Email: \href{mailto:sjcarbon@lbl.gov}{sjcarbon@lbl.gov}}
+}
+
+\date{17\textsuperscript{th} Bioinformatics Open Source Conference
+  (BOSC) 2017, Prague, Czech Republic}
+
+\begin{document}
+%\pagestyle{empty}
+%\thispagestyle{empty}
+\maketitle
+%\pagestyle{empty}
+\thispagestyle{empty}
+
+\vspace{-0.2in}
+\noindent
+Website: \url{https://github.com/kltm/lala} \\
+Repository: \url{https://github.com/kltm/lala} \\
+License: CC-BY 4.0 \\
+
+%escaping many of the pitfalls of more ``tabular'' modeling. Noctua also
+%The Gene Ontology \citep{GO} project aims to create a comprehensive
+
+Much thought and paper has been put into sharing information between
+resources, from the use of common identifiers to use of common data
+stores and APIs. We would like to explore an area that has not, to the
+authors' knowledge, been as well explored: the sharing of simple
+information directly between web-based applications, without the use
+of a non-application central server or API as an intermediary.
+%% For example, a curator may wish to
+%% import IDs from one tool to another, curate the same paper using
+%% different tools, or a researcher may wish to analyze the same piece of
+%% genome in different analysis tools.
+
+More concretely, the use cases that we wish to look at are how to
+manage user authentication, authorization, and how to obtain small
+packets of specific information from an external resource that has its
+own associated web application. As a way to explore this space, we
+have created applications that accomplish this by passing tokens and
+round-tripping a packet of information (acting as a ``black box'' or
+``piggy bank'') through the external application using basic HTTP
+methods, allowing an easy high-level ``federation''. In an environment
+where much effort is being spent on the creation of rich web
+applications tailored to the habits of specific groups of scientists
+and curators, users and engineers would have much to gain by being
+able to reuse functionality from external applications as-is in their
+workflows and stacks, as well as having the added benefit of driving
+traffic to external web applications that implement such a common
+specification.
+
+Through these explorations, we have decided that a path forward should
+capture the following qualities:
+
+%% For the prototype we worked on, we started with a method that Galaxy
+%% [] uses for running a round-trip for interactively collecting data for
+%% use in a pipeline. In addition to this pattern, we added an
+%% information packet that is meant to be passed through the external
+%% system with no modification. This model seemed like it would be
+%% appropriate for our use case as it included the following properties:
+
+\begin{itemize}[noitemsep]
+\item Easy to implement: complexity can be a barrier to adoption and
+  implementation
+\item Basic HTTP tooling: any system should have easy access to
+  the tools necessary
+\item ``Stateless'': simplifying debugging and implementation
+\item Minimal need for initial coordination \\ Beyond what data is to
+  be returned, the external application does not need to understand
+  the transiting packet
+\item No need for calling application to coordinate changes to own API
+  after initial coordination: as the calling application is
+  responsible for decoding the information it initially sent and the
+  location it is sent to, major API changes can occur without the need
+  to coordinate with any other resource
+\item Have the ability to perform operations ``remotely'' while still
+  logged-in to the calling application, without the need to coordinate
+  cross-site logins: this can be done by placing an authorization
+  token in the transiting packet
+\end{itemize}
+
+Taking inspiration from the methods used by Galaxy \citep{Galaxy} to
+pull data in from external applications, we'd like to discuss this
+potential protocol and get feedback from the community about general
+patterns for passing users and relatively simple data directly between
+applications. Variations of this proposal have been implemented or
+explored in applications such as: Noctua, Textpresso Central, AmiGO,
+and PubAnnotation.
+
+%By using a model that allows for
+%deposit in, but no other alteration to, the data passed data packet,
+%we are able to recreate state in the calling application to apply the
+%external data to the desired task.
+
+%% If the calling application and external application coordinate, or if
+%% the calling application has a rich and documented pass-through packet
+%% format, the external application can skim information from the
+%% interaction, to create a richer interface for the user, or to add that
+%% data to external application’s store.
+
+%% This proposal has its origins in initial work done with Noctua [?]
+%% communicating with Textpresso Central [?] and later work done with
+%% looking at communication between Noctua and PubAnnotation [?] at
+%% BioHackathon 16 \url{https://github.com/dbcls/bh16/wiki/Noctua#add-connections-with-external-markuppaper-annotation-resources-partial}
+%%   ?] and BLAH 3 \url{https://docs.google.com/presentation/d/1-3HgoBmnu9p1Alt6myjfLUJIOojIgpskRFh47NjEd5A/edit?usp=sharing} \url{https://docs.google.com/document/d/16DNkAO9YHKZmQjdVxq2B_ULYQDu7jjc0aciVKdTwX8w/edit?usp=sharing}
+%%   ?] to use external tools and IDs to enrich the evidence captured by
+%% Noctua.
+
+%% This project has two aspects: 1) the specific task of coordinating
+%% basic communication between Noctua and PubAnnotation for adding PubMed
+%% publication spans to evidence in Noctua models (and the possible
+%% addition of Noctua modeling information to PubAnnotation held
+%% annotations) and 2) to prototype a light model for sharing information
+%% between two interactive applications--a calling application and an
+%% external application.
+
+% License 
+%
+% This work is a proposal for a software protocol, not a yet concrete or
+% generalized implementation. As such, the text of this work is
+% available under the CC-BY 4.0 license.
+
+%## Current implementations and work
+
+%% * https://github.com/geneontology/noctua/issues/283
+%% * https://github.com/geneontology/noctua/issues/316
+%% * https://github.com/pubannotation/pubannotation/issues/3
+
+\begin{thebibliography}{}
+
+%\bibitem[The Gene Ontology Consortium, 2015]{GO}Gene Ontology Consortium: going forward. {\it Nucl. Acids Res.} 43, D1049–D1056.
+  
+\bibitem[Enis Afgan, Dannon Baker, Marius van den Beek, Daniel Blankenberg, Dave Bouvier, Martin Čech, John Chilton, Dave Clements, Nate Coraor, Carl Eberhard, Björn Grüning, Aysam Guerler, Jennifer Hillman-Jackson, Greg Von Kuster, Eric Rasche, Nicola Soranzo, Nitesh Turaga, James Taylor, Anton Nekrutenko, and Jeremy Goecks, 2016]{Galaxy}The Galaxy platform for accessible, reproducible and collaborative biomedical analyses, 2016 update {\it Nucleic Acids Research} 44(W1): W3-W10, doi:10.1093/nar/gkw343
+  
+\end{thebibliography}
+
+\end{document}
