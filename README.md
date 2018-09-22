@@ -94,8 +94,8 @@ would be:
 A canned interaction example--somewhat more complicated, taken from Textpresso Central interaction with Noctua--might have outgoing URL GET parameters:
 
 ```
-endpoint_url = ​URL encoded location of caller endpoint (POST to this URL)
-endpoint_arguments = ​URL encoded stringified JSON blob structured as below
+endpoint_url = URL encoded location of caller endpoint (POST to this URL)
+endpoint_arguments = URL encoded stringified JSON blob structured as below
 ```
 
 ```json
@@ -111,9 +111,7 @@ endpoint_arguments = ​URL encoded stringified JSON blob structured as below
 }
 ```
 
-Incoming/returning data, POSTed to the *endpoint\_url*, would be the
-same as the outgoing data above, except with requests added in the
-proper location:
+Incoming/returning data, POSTed to the *endpoint\_url*, would be the same as the outgoing data above, except with requests added in the proper location:
 
 ```json
 {
@@ -140,9 +138,7 @@ proper location:
 }
 ```
 
-Keep in mind that the actual contents of the passed packet are
-"abritrary" and completely decided by the caller, except for the
-*requests* list field that can be filled by the external application.
+Keep in mind that the actual contents of the passed packet are "abritrary" and completely decided by the caller, except for the *requests* list field that can be filled by the external application.
 
 Control after POSTing to the caller's API would be handled using HTTP codes by the caller. It might be interesting to consider a more interactive use case for calling applications, such as passing control back to the external appication after the data has ben processed by the caller. As the flow of control is left to the calling application, as it may have opened a new window for the external application that it wants closed, or have some other process in place to get the user re-oriented. 
 
@@ -152,18 +148,15 @@ https://github.com/pubannotation/pubannotation/issues/3 .
 
 ## Open questions
 
-While we have worked out the details to satisfy our core use cases, we
-are interested in federating more generally with the wide range of
-biological and curation applications available. We would like input on how that could happen from the community. Ideas include:
+While we have worked out the details to satisfy our core use cases, if not implement them all, we are interested in federating more generally with the wide range of biological and curation applications available. We would like input on how that could happen from the community. Ideas include:
 
 - better documentation
 - changes to the specification
-- implementations/middleware
-- a central registry
+- concrete implementations and examples of and/or use of full specification
+- generic implementations/middleware
+- a central registry or interaction with a current registry
 
-As well, there are some edge cases, especially around passing control
-(or not) at the end of an interaction that we would like to clarify by
-implementations in the real world.
+As well, there are some edge cases, especially around passing control (or not) at the end of an interaction that we would like to clarify by working through implementations in the real world.
 
 ## Availability
 
@@ -171,7 +164,4 @@ implementations in the real world.
 
 ## License 
 
-This work is a proposal for a software protocol, not a yet concrete or
-generalized implementation. As such, the text of this work is
-available under the
-[CC-BY 4.0 license](https://github.com/kltm/lala/blob/master/LICENSE).
+This work is a proposal for a software protocol, not a yet concrete or generalized implementation. As such, the text of this work is available under the [CC-BY 4.0 license](https://github.com/kltm/lala/blob/master/LICENSE).
